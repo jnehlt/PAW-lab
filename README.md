@@ -1,4 +1,4 @@
 # PAW-lab
 
-GitZałożenia 
-/{backend | frontend}/{feature | hotfix }/nazwa 
+## GitZałożenia <br/>
+/{**backend | frontend**}/{**feature | hotfix **}/nazwa 
