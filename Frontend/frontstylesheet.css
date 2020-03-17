@@ -1,0 +1,29 @@
+body {
+    background-image: url("running-track-sn-3000x2001.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+}
+
+html {
+    height: 100%;
+}
+
+.card-header {
+    background-color: transparent;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.navbar-toggler {
+    border-color: #0069d9;
+}
+
+.btn {
+    margin-left: 2px;
+}
