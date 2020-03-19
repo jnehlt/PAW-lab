@@ -6,14 +6,21 @@ body {
 
 .navbar-brand {
     font-weight: bolder;
+    font-size: 2em;
+}
+
+.dropdown-header {
+    font-size: larger;
+    font-weight: bolder;
 }
 
 html {
     height: 100%;
 }
 
-.card-header {
-    background-color: transparent;
+.list-head {
+    font-weight: bolder;
+    text-transform: uppercase;
 }
 
 .navbar {
@@ -21,9 +28,14 @@ html {
 }
 
 .navbar-toggler {
-    border-color: #0069d9;
+    background-color: #4e555b;
 }
 
 .btn {
     margin-left: 2px;
 }
+
+.container {
+    margin-top: 30px;
+}
+
