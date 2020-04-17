@@ -3,36 +3,15 @@
     <topheader></topheader>
     <projectheader></projectheader>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-4 col-md-4 col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item disabled list-head" aria-disabled="true">Kategoria<button class="btn btn-kropki"><i class="fas fa-ellipsis-v"></i></button></li>
-            <li class="list-group-item">Nazwa zadania</li>
-            <li class="list-group-item">Kolejne zadanie</li>
-            <li class="list-group-item">I jeszcze jedno</li>
-            <li class="list-group-item">I tak w kółko Macieju</li>
-          </ul>
-        </div>
-        <div class="col-4 col-md-4 col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item disabled list-head" aria-disabled="true">Kategoria<button class="btn btn-kropki"><i class="fas fa-ellipsis-v"></i></button></li>
-            <li class="list-group-item">Nazwa zadania</li>
-            <li class="list-group-item">Kolejne zadanie</li>
-            <li class="list-group-item">I jeszcze jedno</li>
-            <li class="list-group-item">I tak w kółko Macieju</li>
-          </ul>
-        </div>
-        <div class="col-4 col-md-4 col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item disabled list-head" aria-disabled="true">Kategoria<button class="btn btn-kropki"><i class="fas fa-ellipsis-v"></i></button></li>
-            <li class="list-group-item">Nazwa zadania</li>
-            <li class="list-group-item">Kolejne zadanie</li>
-            <li class="list-group-item">I jeszcze jedno</li>
-            <li class="list-group-item">I tak w kółko Macieju</li>
-          </ul>
-        </div>
-      </div>
+    <div class="row">
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
+        <maincard></maincard>
     </div>
     <router-view />
   </div>
@@ -40,17 +19,20 @@
 
 <script>
 import TopHeader from "@/components/TopHeader.vue";
-import ProjectHeader from "@/components/ProjectHeader.vue"
+import ProjectHeader from "@/components/ProjectHeader.vue";
+import MainCard from "@/components/MainCard.vue"
 
 export default {
   components: {
     "topheader": TopHeader,
-    "projectheader": ProjectHeader 
+    "projectheader": ProjectHeader,
+    "maincard": MainCard
   }
 };
 </script>
 
 <style lang="scss">
+
 body {
     background-image: url("../src/assets/running-track-sn-3000x2001.jpg");
     background-size: cover;
@@ -62,7 +44,7 @@ body {
     font-weight: bolder;
 }
 
-html {
+html, body {
     height: 100%;
 }
 
@@ -75,8 +57,24 @@ html {
     margin-left: 2px;
 }
 
-.container {
-    margin-top: 30px;
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: 10px;
+  height: 100vh;
 }
+
+::-webkit-scrollbar {
+  height: 4px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 4px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
 
 </style>
