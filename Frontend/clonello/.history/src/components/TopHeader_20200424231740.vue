@@ -53,7 +53,7 @@ export default {
 <style scoped lang="scss">
 .navbar-brand {
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar {
@@ -63,6 +63,7 @@ export default {
 .navbar-toggler {
     background-color: #4e555b;
 }
-
-
+.dropdown-toggle::after {
+    display: none;
+}
 </style>

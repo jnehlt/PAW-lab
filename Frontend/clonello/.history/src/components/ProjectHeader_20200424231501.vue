@@ -43,5 +43,4 @@ export default {
 .navbar-toggler {
     background-color: #4e555b;
 }
-
 </style>

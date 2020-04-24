@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <topheader></topheader>
+    <topheader>
+      <profile-sidebar></profile-sidebar>
+    </topheader>
     <projectheader></projectheader>
 
     <div class="row">
@@ -52,6 +54,11 @@ html, body {
     font-weight: bolder;
     text-transform: uppercase;
 }
+
+.btn {
+    margin-left: 2px;
+}
+
 
 .row {
   display: flex;

@@ -53,6 +53,7 @@ html, body {
     text-transform: uppercase;
 }
 
+
 .row {
   display: flex;
   flex-wrap: nowrap;

@@ -22,22 +22,29 @@
         </ul>
         <ul class="navbar-right navbar-nav">
           <li>
-            <b-dropdown id="dropdown-right" right text="Dodaj" variant="success" class="m-2">
-              <b-dropdown-item href="#">Coś</b-dropdown-item>
-              <b-dropdown-item href="#">Coś innego</b-dropdown-item>
-              <b-dropdown-item href="#">Dobra, spierdalaj!</b-dropdown-item>
-            </b-dropdown>
-            <b-dropdown id="dropdown-right" right text="Profil" variant="primary" class="m-2">
-              <b-dropdown-item href="#">Ustawienia</b-dropdown-item>
-              <b-dropdown-item href="#">Wyloguj</b-dropdown-item>
-            </b-dropdown>
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">Dodaj <i class="fas fa-plus"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" id="collapseAdd">
+              <a class="dropdown-item" href="#">Tablicę</a>     
+              <a class="dropdown-item" href="#">Zespół</a>
+            </div>
+          </li>
+          <li>
+            <b-button v-b-toggle.sidebar-right>Toggle Sidebar</b-button>
+              <b-sidebar id="sidebar-right" title="Sidebar" right shadow>
+                <div class="px-3 py-2">
+                  <p>
+                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                  </p>
+                  <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+                </div>
+              </b-sidebar>
           </li>
         </ul>
       </div>
     </nav>
   </div>
-  <!-- class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">Dodaj <i class="fas fa-plus"></i>
-            </button> -->
 </template>
 
 <script>
@@ -53,7 +60,7 @@ export default {
 <style scoped lang="scss">
 .navbar-brand {
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar {
@@ -63,6 +70,4 @@ export default {
 .navbar-toggler {
     background-color: #4e555b;
 }
-
-
 </style>

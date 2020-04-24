@@ -53,7 +53,7 @@ export default {
 <style scoped lang="scss">
 .navbar-brand {
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar {

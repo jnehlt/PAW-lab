@@ -44,4 +44,7 @@ export default {
     background-color: #4e555b;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
 </style>

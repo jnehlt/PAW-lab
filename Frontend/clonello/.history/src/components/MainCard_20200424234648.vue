@@ -1,6 +1,6 @@
 <template>
         <div class="col-3 col-md-3 col-sm-3">
-            <b-card id="duties-card" no-body header="Card with flush list group">
+            <b-card id="duties-card" no-body header="Card with flush list group" <b>
                 <b-list-group flush="">
                     <b-list-group-item href="#" class="flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
