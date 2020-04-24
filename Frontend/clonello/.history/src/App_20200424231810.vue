@@ -53,6 +53,11 @@ html, body {
     text-transform: uppercase;
 }
 
+.btn {
+    margin-left: 1px;
+}
+
+
 .row {
   display: flex;
   flex-wrap: nowrap;

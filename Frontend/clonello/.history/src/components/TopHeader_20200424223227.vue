@@ -22,15 +22,12 @@
         </ul>
         <ul class="navbar-right navbar-nav">
           <li>
-            <b-dropdown id="dropdown-right" right text="Dodaj" variant="success" class="m-2">
-              <b-dropdown-item href="#">Coś</b-dropdown-item>
-              <b-dropdown-item href="#">Coś innego</b-dropdown-item>
-              <b-dropdown-item href="#">Dobra, spierdalaj!</b-dropdown-item>
-            </b-dropdown>
-            <b-dropdown id="dropdown-right" right text="Profil" variant="primary" class="m-2">
-              <b-dropdown-item href="#">Ustawienia</b-dropdown-item>
-              <b-dropdown-item href="#">Wyloguj</b-dropdown-item>
-            </b-dropdown>
+            <button id="dropdown-right" right text="Right align" variant="primary" class="m-2">
+    <b-dropdown-item href="#">Action</b-dropdown-item>
+    <b-dropdown-item href="#">Another action</b-dropdown-item>
+    <b-dropdown-item href="#">Something else here</b-dropdown-item>
+ 
+           
           </li>
         </ul>
       </div>
@@ -53,7 +50,7 @@ export default {
 <style scoped lang="scss">
 .navbar-brand {
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar {
@@ -63,6 +60,4 @@ export default {
 .navbar-toggler {
     background-color: #4e555b;
 }
-
-
 </style>

@@ -53,16 +53,16 @@ export default {
 <style scoped lang="scss">
 .navbar-brand {
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar {
     background-color: transparent;
+    font-size: 5em;
 }
 
 .navbar-toggler {
     background-color: #4e555b;
 }
-
 
 </style>

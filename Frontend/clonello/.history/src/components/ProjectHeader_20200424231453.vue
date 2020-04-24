@@ -14,9 +14,9 @@
         <li class="nav-item dropdown">
           <b-nav-item-dropdown text="Nie pierdol i klikaj" right>
             <b-dropdown-item href="#">Wkurwia</b-dropdown-item>
-            <b-dropdown-item href="#">Mnie</b-dropdown-item>
-            <b-dropdown-item href="#">Ta</b-dropdown-item>
-            <b-dropdown-item href="#">Uczelnia</b-dropdown-item>
+            <b-dropdown-item href="#">ES</b-dropdown-item>
+            <b-dropdown-item href="#">RU</b-dropdown-item>
+            <b-dropdown-item href="#">FA</b-dropdown-item>
           </b-nav-item-dropdown>
         </li>
       </ul>
@@ -43,5 +43,4 @@ export default {
 .navbar-toggler {
     background-color: #4e555b;
 }
-
 </style>
