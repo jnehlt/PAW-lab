@@ -7,6 +7,7 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 import org.joda.time.LocalDateTime
 import java.security.MessageDigest
 
@@ -34,13 +35,25 @@ class UserController {
 
     fun insert(user: UserDTO) {
         transaction {
-            var pass = MessageDigest.getInstance("SHA-512").digest(user.password.toByteArray()).fold("", { str, it -> str + "%02x".format(it) })
-            Users.insert {
+            val pass = MessageDigest.getInstance("SHA-512").digest(user.password.toByteArray()).fold("", { str, it -> str + "%02x".format(it) })
+            val id = Users.insert {
                 it[firstName] = user.firstName
                 it[lastName] = user.lastName
                 it[password] = pass.toByteArray()
                 it[email] = user.email
                 it[createDate] = LocalDateTime.now().toDateTime()
+            }
+            id
+        }
+    }
+
+    fun update(user : UserDTO,id : Int){
+        transaction {
+            Users.update({Users.id eq id}) {
+                val pass = MessageDigest.getInstance("SHA-512").digest(user.password.toByteArray()).fold("", { str, it -> str + "%02x".format(it) })
+                it[firstName] = user.firstName
+                it[lastName] = user.lastName
+                it[password] = pass.toByteArray()
             }
         }
     }
