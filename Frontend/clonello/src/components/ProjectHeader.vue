@@ -20,7 +20,9 @@
           </b-nav-item-dropdown>
         </li>
       </ul>
+       
     </div>
+    <button type="button" class="btn btn-primary">Add new card</button>
   </div>
 </template>
 

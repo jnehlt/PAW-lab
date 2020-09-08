@@ -10,9 +10,10 @@
 
                         <p class="mb-1">
                         Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+                        Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
                         </p>
 
-                        <small>Donec id elit non mi porta.</small>
+                        <small>Donec id elit non mi porta</small>
                     </b-list-group-item>
 
                     <b-list-group-item href="#" class="flex-column align-items-start">
