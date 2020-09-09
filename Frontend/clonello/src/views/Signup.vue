@@ -1,7 +1,12 @@
 <template>
     <div class="loginform">
         <form>
-            <h3 style="text-align: center">Sign In</h3>
+            <h3 style="text-align: center">Sign Up</h3>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="name" class="form-control form-control-lg" placeholder="Username" />
+            </div>
 
             <div class="form-group">
                 <label>Email</label>
@@ -10,15 +15,15 @@
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control form-control-lg" />
+                <input type="password" class="form-control form-control-lg" placeholder="Password"/>
             </div>
 
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block">
-                <router-link to="/home" exact>Sign In</router-link>
+                <router-link to="/home" exact>Sign Up</router-link>
             </button>
 
             <button type="button" class="signup btn btn-primary">
-                <router-link to="/sign-up" exact>Sign up</router-link>
+                <router-link to="/" exact>Sign In</router-link>
             </button>
             
             <button type="button" class="forgot-password btn btn-primary">
@@ -64,7 +69,7 @@ label {
 
 .forgot-password,
 .forgot-password a,
-.sendbutton {
+.signup {
   text-align: center;
   font-size: 13px;
   color: #7a7a7a;
@@ -72,7 +77,6 @@ label {
 }
 
 .forgot-password a,
-.sendbutton a,
 .signup a {
   color: #ffffff;
 }

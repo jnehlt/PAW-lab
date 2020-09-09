@@ -13,7 +13,17 @@ const routes = [
     path: "/home",
     name: "Home",
     component: () => import ("../views/Home.vue")
-  }  
+  },
+  {
+    path: "/sign-up",
+    name: "Signup",
+    component: () => import ("../views/Signup.vue")
+  },
+  {
+    path: "/forgotpassword",
+    name: "Forgot Password",
+    component: () => import ("../views/ForgotPassword.vue")
+  }
 ];
 
 const router = new VueRouter({

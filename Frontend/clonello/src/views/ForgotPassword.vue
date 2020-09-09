@@ -1,20 +1,15 @@
 <template>
     <div class="loginform">
         <form>
-            <h3 style="text-align: center">Sign In</h3>
+            <h3 style="text-align: center">Forgot password</h3>
 
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control form-control-lg" placeholder="name@example.com" />
             </div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control form-control-lg" />
-            </div>
-
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block">
-                <router-link to="/home" exact>Sign In</router-link>
+                <router-link to="/" exact>Send email</router-link>
             </button>
 
             <button type="button" class="signup btn btn-primary">
@@ -22,7 +17,7 @@
             </button>
             
             <button type="button" class="forgot-password btn btn-primary">
-                <router-link to="/forgotpassword" exact>Forgot password?</router-link>
+                <router-link to="/" exact>Sign In</router-link>
             </button>
         </form>
     </div>
