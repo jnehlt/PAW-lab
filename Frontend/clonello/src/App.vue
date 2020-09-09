@@ -2,6 +2,9 @@
   <div id="app">
     <topheader></topheader>
     <projectheader></projectheader>
+    <smallcards></smallcards>
+    <mainlist></mainlist>
+    <tasklist></tasklist>
 
     <div class="row">
         <maincard></maincard>
@@ -21,12 +24,18 @@
 import TopHeader from "@/components/TopHeader.vue";
 import ProjectHeader from "@/components/ProjectHeader.vue";
 import MainCard from "@/components/MainCard.vue";
+import SmallCards from "@/components/SmallCards.vue";
+import MainList from "@/components/MainList.vue";
+import TaskList from '@/components/TaskList.vue';
 
 export default {
   components: {
     "topheader": TopHeader,
     "projectheader": ProjectHeader,
-    "maincard": MainCard
+    "maincard": MainCard,
+    "smallcards": SmallCards,
+    "mainlist":MainList,
+    "tasklist":TaskList
   }
 };
 </script>
