@@ -19,11 +19,11 @@
             </div>
 
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block">
-                <router-link to="/home" exact>Sign Up</router-link>
+                <router-link to="/login" exact>Sign Up</router-link>
             </button>
 
             <button type="button" class="signup btn btn-primary">
-                <router-link to="/" exact>Sign In</router-link>
+                <router-link to="/login" exact>Sign In</router-link>
             </button>
             
             <button type="button" class="forgot-password btn btn-primary">
