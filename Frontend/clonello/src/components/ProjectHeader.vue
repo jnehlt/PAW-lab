@@ -22,12 +22,14 @@
       </ul>
        
     </div>
-    <button type="button" class="btn btn-primary">Add new card</button>
+
+   
   </div>
 </template>
 
 <script>
 export default {
+
 
 }
 </script>

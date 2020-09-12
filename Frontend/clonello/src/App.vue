@@ -1,5 +1,5 @@
 <template>
-  
+
     <router-view ></router-view>
   
 </template>
@@ -19,7 +19,7 @@
       'forgotpassword': ForgotPassword
     }
   }
-
+  
 </script>
 
 <style lang="scss">
