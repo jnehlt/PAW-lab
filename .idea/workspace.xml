@@ -3,11 +3,84 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:frontend" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:Frontend" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:Frontend" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:clonello" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:frontend" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cffb6a26-f96e-4235-8ea9-cbcdc2014a83" name="Default Changelist" comment="">
+    <list default="true" id="cffb6a26-f96e-4235-8ea9-cbcdc2014a83" name="Default Changelist" comment="Poprawa readme.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/Application.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/controllers/UserController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/controllers/UserController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/database/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/database/model/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/database/tables/Users.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/database/tables/Users.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +113,7 @@
         <option value="Kotlin Object" />
         <option value="Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -60,6 +134,10 @@
   <component name="ProjectId" id="1cDbc6zTzZIEh907tJuwP6cSVKK" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -88,7 +166,26 @@
       <recent name="C:\Users\kowalczyka\Devs_School\PAW-lab\Backend\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.Server">
+    <configuration name="Backend [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Server" type="JetRunConfigurationType">
       <module name="example.main" />
       <option name="VM_PARAMETERS" value="" />
@@ -102,6 +199,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Backend [dependencies]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -169,22 +271,46 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom" timestamp="1599421110612">
+    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1599892851727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599421110612" />
-    <state width="1877" height="277" key="GridCell.Tab.0.center" timestamp="1599421110611">
+    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599892851727" />
+    <state width="434" height="441" key="DebuggerActiveHint" timestamp="1599422111523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599421110611" />
-    <state width="1877" height="277" key="GridCell.Tab.0.left" timestamp="1599421110611">
+    <state width="434" height="441" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1599422111523" />
+    <state width="1877" height="342" key="GridCell.Tab.0.bottom" timestamp="1600011112909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599421110611" />
-    <state width="1877" height="277" key="GridCell.Tab.0.right" timestamp="1599421110611">
+    <state width="1877" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112909" />
+    <state width="1877" height="342" key="GridCell.Tab.0.center" timestamp="1600011112909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599421110611" />
+    <state width="1877" height="342" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112909" />
+    <state width="1877" height="342" key="GridCell.Tab.0.left" timestamp="1600011112909">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112909" />
+    <state width="1877" height="342" key="GridCell.Tab.0.right" timestamp="1600011112909">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112909" />
+    <state width="1877" height="342" key="GridCell.Tab.1.bottom" timestamp="1600011112783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112783" />
+    <state width="1877" height="342" key="GridCell.Tab.1.center" timestamp="1600011112783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112783" />
+    <state width="1877" height="342" key="GridCell.Tab.1.left" timestamp="1600011112783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112783" />
+    <state width="1877" height="342" key="GridCell.Tab.1.right" timestamp="1600011112783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="342" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600011112783" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599418793999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

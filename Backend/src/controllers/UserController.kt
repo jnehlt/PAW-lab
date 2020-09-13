@@ -24,9 +24,7 @@ class UserController {
         transaction {
             Users.selectAll().map {
                 users.add(User(
-                        it[Users.firstName]
-                        , it[Users.lastName]
-                        , it[Users.email]
+                        it[Users.email], it[Users.password]
                 ))
             }
         }
