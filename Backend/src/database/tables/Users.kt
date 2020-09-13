@@ -1,8 +1,9 @@
 package com.example.server.database.tables
 
+import io.ktor.auth.*
 import org.jetbrains.exposed.sql.Table
 
-object Users : Table("public.Users") {
+object Users : Table("public.Users"), Principal {
     val id = integer("id").autoIncrement().primaryKey()
     val firstName = text("firstName")
     val lastName = text("lastName")

@@ -1,14 +1,16 @@
 package com.example.server.database.model
 
-import org.joda.time.DateTime
+import io.ktor.auth.*
+import java.util.*
 
 data class User(
-        val id: Int,
-        val firstName: String,
-        val lastName: String,
+        val firstName: String?,
+        val lastName: String?,
         val email: String,
         val password: ByteArray,
-        val createDate: DateTime
-) {
-    constructor(firstName: String, lastName: String, email: String) : this(Int.MIN_VALUE, firstName, lastName, email, byteArrayOf(), DateTime(Long.MIN_VALUE))
+        val createDate: Long
+) : Principal {
+    constructor(email: String, password: ByteArray) : this(null, null, email, password, Calendar.getInstance().timeInMillis)
+
+    var id: Int = 0
 }
