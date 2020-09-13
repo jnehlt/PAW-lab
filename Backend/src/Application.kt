@@ -5,8 +5,6 @@ import com.example.server.controllers.SessionController
 import com.example.server.controllers.UserController
 import com.example.server.database.dto.UserDTO
 import com.example.server.database.model.User
-import com.example.server.repositories.UserRepo
-import com.example.server.repositories.UserRepoImpl
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -20,7 +18,10 @@ import io.ktor.jackson.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import kotlinx.html.*
+import kotlinx.html.body
+import kotlinx.html.h1
+import kotlinx.html.head
+import kotlinx.html.title
 import org.jetbrains.exposed.sql.Database
 import java.security.MessageDigest
 
@@ -41,7 +42,6 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 
-    var userRepo: UserRepo = UserRepoImpl()
     install(Authentication) {
         /**
          * Setup the JWT authentication to be used in [Routing].
@@ -52,10 +52,18 @@ fun Application.module(testing: Boolean = false) {
             verifier(JwtConfig.verifier)
             realm = "ktor.io"
             validate {
-                val name = it.payload.getClaim("name").asString()
-                val password = MessageDigest.getInstance("SHA-512").digest(it.payload.getClaim("password").toString().toByteArray()).fold("", { str, it -> str + "%02x".format(it) }).toByteArray()
-                if (name != null && password != null) {
-                    User(name, password)
+                val token = this.request.headers.get("Authorization")?.removePrefix("Bearer ")
+
+                if (sessionController.checkTokenValid(token)) {
+                    val userId = sessionController.getUSerIdByToken(token!!)
+                    if (userId != null) {
+                        val user = userController.getById(userId)
+                        user?.let {
+                            return@validate User(it.email, it.password)
+                        }
+                    }
+
+                    null
                 } else
                     null
             }
@@ -70,30 +78,6 @@ fun Application.module(testing: Boolean = false) {
                 }
                 body {
                     h1 { +"Witaj na serwerze Clonello" }
-                    h2 {
-                        +"GET - pobranie wszystkich uzytkowników"
-                        p {
-                            +"../users"
-                        }
-                    }
-
-                    h2 {
-                        +"POST - utworzenie nowego użytkownika"
-                        p {
-                            +"../users"
-                        }
-                        p {
-                            +"   argumenty:"
-                        }
-                        p {
-                            +"""
-                                {
-                                    "email":"{string}",
-                                    "password":"{string}"
-                                }
-                            """.trimIndent()
-                        }
-                    }
                 }
             }
         }
@@ -104,18 +88,34 @@ fun Application.module(testing: Boolean = false) {
             }
         }
 
-        post("/users") {
+        authenticate {
+            delete("/users") {
+                val userDTO = call.receive<UserDTO>()
+                val user = userController.getByEmail(userDTO.email)
+                userController.delete(userDTO)
+                sessionController.delete(user?.id!!)
+                call.respond(HttpStatusCode.NoContent)
+            }
+        }
+
+        post("/users/sign") {
             val userDTO = call.receive<UserDTO>()
-            val id = userController.insert(userDTO)
-            call.respond(HttpStatusCode.Created, id)
+            if (userController.getByEmail(userDTO.email) == null) {
+                userController.insert(userDTO)
+                call.respond(HttpStatusCode.Created)
+            } else {
+                call.respond(HttpStatusCode.Conflict)
+            }
         }
 
         authenticate {
-            put("/users/{id}") {
+            put("/users") {
                 try {
+                    val token = this.context.request.headers.get("token")?.removePrefix("Bearer ")
+                    val userId = sessionController.getUSerIdByToken(token!!)
+                    val user = userController.getById(userId!!)
                     val userDTO = call.receive<UserDTO>()
-                    val id = call.parameters["id"]?.toInt() ?: 0
-                    userController.update(userDTO, id)
+                    userController.update(userDTO, user?.id!!)
                     call.respond(HttpStatusCode.Accepted)
                 } catch (e: Exception) {
                     call.respond(HttpStatusCode.BadRequest)
@@ -126,28 +126,35 @@ fun Application.module(testing: Boolean = false) {
         post("users/login") {
             try {
                 val userCred = call.receive<UserPasswordCredential>()
-                val currentUser = userController.getAll().find { user -> user.email.equals(userCred.name) }
+                val currentUser = userController.getByEmail(userCred.name)
                 val currentPassword = MessageDigest.getInstance("SHA-512").digest(userCred.password.toByteArray()).fold("", { str, it -> str + "%02x".format(it) }).toByteArray()
 
-                if (currentPassword.contentEquals(currentUser?.password!!)) {
-
-                    val token = JwtConfig.makeToken(currentUser)
-                    call.respond(HttpStatusCode.Accepted, token)
-                } else {
-                    call.respond(HttpStatusCode.BadRequest)
+                currentUser?.let {
+                    if (currentPassword.contentEquals(it.password)) {
+                        val token = JwtConfig.makeToken(it)
+                        sessionController.insert(it.id, token)
+                        return@post call.respond(HttpStatusCode.Accepted, token)
+                    } else {
+                        return@post call.respond(HttpStatusCode.Unauthorized)
+                    }
                 }
+                call.respond(HttpStatusCode.Unauthorized)
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.BadRequest)
             }
         }
 
         authenticate {
-            post("users/logout") {
+            get("users/logout") {
                 try {
-                    val userDTO = call.receive<UserDTO>()
-                    val currentUser = userController.getAll().find { user -> user.email.equals(userDTO.email) }
+                    val token = this.context.request.headers.get("token")?.removePrefix("Bearer ")
+                    val userId = sessionController.getUSerIdByToken(token!!)
+                    val user = userController.getById(userId!!)
+                    val currentUser = userController.getByEmail(user?.email!!)
+                    currentUser?.let {
+                        sessionController.delete(it.id)
+                    }
 
-                    sessionController.delete(currentUser!!.id)
                     call.respond(HttpStatusCode.NoContent)
                 } catch (e: Exception) {
                     call.respond(HttpStatusCode.BadRequest)

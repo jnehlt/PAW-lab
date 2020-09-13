@@ -5,7 +5,8 @@ import org.jetbrains.exposed.sql.Table
 object Session : Table("public.Session") {
     val id = integer("id").autoIncrement().primaryKey()
     val userId = integer("userId")
-    val createDate = long("createDate")
+    val token = text("token")
     val expirationDate = long("expirationDate")
+    val createDate = long("createDate")
 }
 
