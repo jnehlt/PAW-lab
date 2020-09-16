@@ -29,9 +29,18 @@
 </template>
 
 <script>
-export default {
+import { router } from "../_helpers";
+import { userService } from "../_services";
 
+
+export default {
+    data () {
+        return {
+            
+        }
+    }
 }
+
 </script>
 
 <style lang="scss">
