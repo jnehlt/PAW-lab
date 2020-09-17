@@ -3,6 +3,7 @@ package com.example.server.controllers
 import com.example.server.database.tables.Session
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.joda.time.DateTime
 import java.util.*
 
 class SessionController {
@@ -17,12 +18,12 @@ class SessionController {
         transaction {
             Session.insert {
                 it[userId] = userIdSession
-                it[createDate] = Calendar.getInstance().timeInMillis
+                it[createDate] = DateTime.now()
                 it[token] = userToken
                 it[expirationDate] = run {
-                    val date = Calendar.getInstance()
-                    date.add(Calendar.HOUR, 4)
-                    date.timeInMillis
+                    val date = DateTime.now()
+                    date.plusHours(4)
+                    date
                 }
             }
         }
@@ -37,12 +38,10 @@ class SessionController {
     fun checkTokenValid(token: String?) =
             transaction {
                 if (token != null) {
-                    val session = Session.select { Session.token eq token }
-                            .mapNotNull { toSession(it) }
-                            .singleOrNull()
+                    val session = getSessionByToken(token)
 
                     session?.let {
-                        return@transaction it.expirationDate > Calendar.getInstance().timeInMillis
+                        return@transaction it.expirationDate.millis > Calendar.getInstance().timeInMillis
                     }
 
                     return@transaction false
@@ -51,19 +50,17 @@ class SessionController {
                 }
             }
 
-    fun getUSerIdByToken(token: String) =
+    fun getSessionByToken(token: String) =
             transaction {
-                val session = Session.select { Session.token eq token }
+                Session.select { Session.token eq token }
                         .mapNotNull { toSession(it) }
-                        .singleOrNull()
-                return@transaction session?.userId
+                        .firstOrNull()
             }
 
-
-    fun toSession(it: ResultRow) = com.example.server.database.model.Session(
+    private fun toSession(it: ResultRow) = com.example.server.database.model.Session(
             id = it[Session.id],
-            token = it[Session.token],
             userId = it[Session.userId],
+            token = it[Session.token],
             expirationDate = it[Session.expirationDate],
             createdDate = it[Session.createDate]
     )

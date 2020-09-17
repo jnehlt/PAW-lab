@@ -1,8 +1,12 @@
 package com.example.server
 
 import com.example.server.auth.JwtConfig
+import com.example.server.controllers.CardController
+import com.example.server.controllers.ListController
 import com.example.server.controllers.SessionController
 import com.example.server.controllers.UserController
+import com.example.server.database.dto.CardDTO
+import com.example.server.database.dto.ListDTO
 import com.example.server.database.dto.UserDTO
 import com.example.server.database.model.User
 import com.fasterxml.jackson.databind.SerializationFeature
@@ -29,6 +33,9 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 private lateinit var userController: UserController
 private lateinit var sessionController: SessionController
+private lateinit var listController: ListController
+private lateinit var cardController: CardController
+
 
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
@@ -55,12 +62,10 @@ fun Application.module(testing: Boolean = false) {
                 val token = this.request.headers.get("Authorization")?.removePrefix("Bearer ")
 
                 if (sessionController.checkTokenValid(token)) {
-                    val userId = sessionController.getUSerIdByToken(token!!)
-                    if (userId != null) {
-                        val user = userController.getById(userId)
-                        user?.let {
-                            return@validate User(it.email, it.password)
-                        }
+                    val session = sessionController.getSessionByToken(token!!)
+                    val user = userController.getById(session?.userId!!)
+                    user?.let {
+                        return@validate User(it.email, it.password)
                     }
 
                     null
@@ -82,22 +87,6 @@ fun Application.module(testing: Boolean = false) {
             }
         }
 
-        authenticate {
-            get("/users") {
-                call.respond(userController.getAll())
-            }
-        }
-
-        authenticate {
-            delete("/users") {
-                val userDTO = call.receive<UserDTO>()
-                val user = userController.getByEmail(userDTO.email)
-                userController.delete(userDTO)
-                sessionController.delete(user?.id!!)
-                call.respond(HttpStatusCode.NoContent)
-            }
-        }
-
         post("/users/sign") {
             val userDTO = call.receive<UserDTO>()
             if (userController.getByEmail(userDTO.email) == null) {
@@ -105,21 +94,6 @@ fun Application.module(testing: Boolean = false) {
                 call.respond(HttpStatusCode.Created)
             } else {
                 call.respond(HttpStatusCode.Conflict)
-            }
-        }
-
-        authenticate {
-            put("/users") {
-                try {
-                    val token = this.context.request.headers.get("token")?.removePrefix("Bearer ")
-                    val userId = sessionController.getUSerIdByToken(token!!)
-                    val user = userController.getById(userId!!)
-                    val userDTO = call.receive<UserDTO>()
-                    userController.update(userDTO, user?.id!!)
-                    call.respond(HttpStatusCode.Accepted)
-                } catch (e: Exception) {
-                    call.respond(HttpStatusCode.BadRequest)
-                }
             }
         }
 
@@ -147,9 +121,9 @@ fun Application.module(testing: Boolean = false) {
         authenticate {
             get("users/logout") {
                 try {
-                    val token = this.context.request.headers.get("token")?.removePrefix("Bearer ")
-                    val userId = sessionController.getUSerIdByToken(token!!)
-                    val user = userController.getById(userId!!)
+                    val token = this.context.request.headers.get("Authorization")?.removePrefix("Bearer ")
+                    val session = sessionController.getSessionByToken(token!!)
+                    val user = userController.getById(session?.userId!!)
                     val currentUser = userController.getByEmail(user?.email!!)
                     currentUser?.let {
                         sessionController.delete(it.id)
@@ -160,6 +134,127 @@ fun Application.module(testing: Boolean = false) {
                     call.respond(HttpStatusCode.BadRequest)
                 }
             }
+
+            get("/users") {
+                call.respond(userController.getAll())
+            }
+
+            delete("/users") {
+                val userDTO = call.receive<UserDTO>()
+                val user = userController.getByEmail(userDTO.email)
+                userController.delete(userDTO)
+                sessionController.delete(user?.id!!)
+                call.respond(HttpStatusCode.NoContent)
+            }
+
+            put("/users") {
+                try {
+                    val token = this.context.request.headers.get("Authorization")?.removePrefix("Bearer ")
+                    val session = sessionController.getSessionByToken(token!!)
+                    val user = userController.getById(session?.userId!!)
+                    val userDTO = call.receive<UserDTO>()
+                    userController.update(userDTO, user?.id!!)
+                    call.respond(HttpStatusCode.Accepted)
+                } catch (e: Exception) {
+                    call.respond(HttpStatusCode.BadRequest)
+                }
+            }
+        }
+
+        ///lists
+        authenticate {
+            get("/lists"){
+                try {
+                    call.respond(listController.getAll())
+                }catch (e : Exception){
+                   var a= e.message
+                }
+            }
+
+            get("/lists/{id}"){
+                val id = call.parameters.get("id")?.toInt()
+                id?.let {
+                    val list = listController.getById(it)
+                    call.respond(HttpStatusCode.OK, list!!)
+                    return@get
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
+
+            post("/lists") {
+                val dto = call.receive<ListDTO>()
+                listController.insert(dto)
+                call.respond(HttpStatusCode.Created)
+            }
+
+            delete("/lists/{id}"){
+                val id = call.parameters.get("id")?.toInt()
+                id?.let {
+                    listController.delete(it)
+                    call.respond(HttpStatusCode.OK)
+                    return@delete
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
+
+            put("/lists/{id}") {
+                val id = call.parameters.get("id")?.toInt()
+                val dto = call.receive<ListDTO>()
+                id?.let {
+                    listController.updateName(id,dto.name)
+                    call.respond(HttpStatusCode.NoContent)
+                    return@put
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
+        }
+
+        //cards
+        authenticate {
+            get("/lists/{id}/cards"){
+                val id = call.parameters.get("id")?.toInt()
+                id?.let {
+                    call.respond(cardController.getAllByList(it))
+                }
+                return@get
+            }
+
+            get("/cards/{id}"){
+                val id = call.parameters.get("id")?.toInt()
+                id?.let {
+                    val card = cardController.getById(it)
+                    call.respond(HttpStatusCode.OK, card!!)
+                    return@get
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
+
+            post("/cards") {
+                val dto = call.receive<CardDTO>()
+                cardController.insert(dto)
+                call.respond(HttpStatusCode.Created)
+            }
+
+            delete("/cards/{id}"){
+                val id = call.parameters.get("id")?.toInt()
+                id?.let {
+                    cardController.delete(it)
+                    call.respond(HttpStatusCode.OK)
+                    return@delete
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
+
+            put("/cards/{id}") {
+                val id = call.parameters.get("id")?.toInt()
+                val dto = call.receive<CardDTO>()
+                id?.let {
+                    cardController.updateName(id,dto)
+                    call.respond(HttpStatusCode.NoContent)
+                    return@put
+                }
+                call.respond(HttpStatusCode.NotFound)
+            }
         }
     }
 }
@@ -167,6 +262,8 @@ fun Application.module(testing: Boolean = false) {
 fun setupControllers() {
     userController = UserController()
     sessionController = SessionController()
+    listController = ListController()
+    cardController = CardController()
 }
 
 fun initDB() {
