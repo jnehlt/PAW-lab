@@ -2,20 +2,11 @@
   <div id="app">
     <topheader></topheader>
     <projectheader></projectheader>
-    <smallcards></smallcards>
+    <smallcards></smallcards> -->
     <mainlist></mainlist>
     <tasklist></tasklist>
 
-    <div class="row">
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-    </div>
+
     <router-view />
   </div>
 </template>
@@ -23,7 +14,6 @@
 <script>
 import TopHeader from "@/components/TopHeader.vue";
 import ProjectHeader from "@/components/ProjectHeader.vue";
-import MainCard from "@/components/MainCard.vue";
 import SmallCards from "@/components/SmallCards.vue";
 import MainList from "@/components/MainList.vue";
 import TaskList from '@/components/TaskList.vue';
@@ -32,7 +22,6 @@ export default {
   components: {
     "topheader": TopHeader,
     "projectheader": ProjectHeader,
-    "maincard": MainCard,
     "smallcards": SmallCards,
     "mainlist":MainList,
     "tasklist":TaskList
@@ -46,6 +35,9 @@ body {
     background-image: url("../src/assets/running-track-sn-3000x2001.jpg");
     background-size: cover;
     background-position: center;
+}
+#app{
+  font-size: 20px;
 }
 
 .dropdown-header {
