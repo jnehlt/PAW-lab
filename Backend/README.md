@@ -1,4 +1,4 @@
-#Jak uruchomić
+# Jak uruchomić
 #### Baza danych
 Aby uruchomić serwer należy uruchomić kontener dockera z postgreSQL<br>
 W tym celu należy w terminalu wpisac:<br>
@@ -19,8 +19,8 @@ oraz uruchomić<br>
 <code>gradle run</code>
 
 
-#Dokumentacja API
-##Użytkownicy
+# Dokumentacja API
+## Użytkownicy
 <h3>Dodanie uzytkownika</h3><br>
 POST
 <code>.../users/sign</code><br>
@@ -68,8 +68,7 @@ GET<code>.../users/logout</code><br>
 <b>nagłówek<b><br>
 <code>"Authorization" : "Bearer token....."</code><br>
 <h2></h2>
-
-##LISTY
+## LISTY
 <h2></h2>
 <h3>Pobranie wszystkich list</h3><br>
 GET<code>.../lists</code><br>
@@ -81,7 +80,6 @@ GET<code>.../lists</code><br>
 GET<code>.../lists/{id}</code><br>
 <b>nagłówek<b><br>
 <code>"Authorization" : "Bearer token....."</code><br>
-
 <h2></h2>
 <h3>Dodanie listy</h3><br>
 POST <code>.../lists/</code><br>
@@ -106,7 +104,7 @@ PUT <code>.../lists/{id}</code><br>
 MODEL LISTS
 </code>
 <h2></h2>
-##Karty
+## Karty
 <h3>Pobranie wszystkich kart danej listy</h3><br>
 GET <code>.../lists/{id}/cards</code><br>
 <b>nagłówek<b><br>
