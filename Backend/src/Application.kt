@@ -165,7 +165,14 @@ fun Application.module(testing: Boolean = false) {
         authenticate {
             get("/lists"){
                 try {
-                    call.respond(listController.getAll())
+                    val token = this.context.request.headers.get("Authorization")?.removePrefix("Bearer ")
+                    if (sessionController.checkTokenValid(token)) {
+                        val session = sessionController.getSessionByToken(token!!)
+                        val user = userController.getById(session?.userId!!)
+                        user?.let {
+                            return@get call.respond(listController.getAll(user.id))
+                        }
+                    }
                 }catch (e : Exception){
                    var a= e.message
                 }
