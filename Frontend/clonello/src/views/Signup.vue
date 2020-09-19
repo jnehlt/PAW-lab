@@ -4,8 +4,13 @@
             <h3 style="text-align: center">Sign Up</h3>
 
             <div class="form-group">
-                <label>Username</label>
-                <input type="name" class="form-control form-control-lg" placeholder="Username" />
+                <label>First Name</label>
+                <input type="firstName" class="form-control form-control-lg" placeholder="First Name" />
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="lastName" class="form-control form-control-lg" placeholder="Last Name" />
             </div>
 
             <div class="form-group">
