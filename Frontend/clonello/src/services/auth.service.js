@@ -1,27 +1,29 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:8082/users/';
+const API_URL = 'http://0.0.0.0:8082/users/';
 
 class AuthService {
     login(user) {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: { "name": user.name, "password": user.password }
-          };
-          return fetch(API_URL + "login", requestOptions) 
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");       
+        var raw = JSON.stringify({"name":user.name,"password": user.password});
+        var requestOptions = {  method: 'POST',  headers: myHeaders,  body: raw,  redirect: 'follow'};
+        fetch(API_URL + "login", requestOptions).then(result => {
+            if (result) {
+                localStorage.setItem('user', JSON.stringify(result))
+            }
+        })
+        .catch(error => console.log('error', error));
+          
         // return axios
         //     .post(API_URL + "login", {
         //         name: user.name,
         //         password: user.password
         //     })
-            .then(response => {
-                if (response.data.accessToken) {
-                    localStorage.setItem('user', JSON.stringify(response.data))
-                }
+            
 
-                return response.data;
-            });
+            //     return result.data;
+            // });
     }
 
     logout() {
