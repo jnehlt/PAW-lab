@@ -2,12 +2,12 @@
   <div id="app">
     <topheader></topheader>
     <projectheader></projectheader>
-    <smallcards></smallcards> -->
-    <mainlist></mainlist>
-    <tasklist></tasklist>
+    <smallcards></smallcards> 
+ 
+   
 
 
-    <router-view />
+   
   </div>
 </template>
 
@@ -15,16 +15,13 @@
 import TopHeader from "@/components/TopHeader.vue";
 import ProjectHeader from "@/components/ProjectHeader.vue";
 import SmallCards from "@/components/SmallCards.vue";
-import MainList from "@/components/MainList.vue";
-import TaskList from '@/components/TaskList.vue';
 
 export default {
   components: {
     "topheader": TopHeader,
     "projectheader": ProjectHeader,
     "smallcards": SmallCards,
-    "mainlist":MainList,
-    "tasklist":TaskList
+ 
   }
 };
 </script>

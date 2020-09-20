@@ -205,9 +205,9 @@ export default {
     opacity: 0;
   }
   label {
-    color:white
+    color:black
   }
   .item-counter {
-    color: white
+    color: black
   }
 </style>
