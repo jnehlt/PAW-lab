@@ -1,14 +1,20 @@
 import axios from "axios";
 
-const API_URL = "http://0.0.0.0:8082/users/";
+const API_URL = 'http://localhost:8082/users/';
 
 class AuthService {
     login(user) {
-        return axios
-            .post(API_URL + "login", {
-                name: user.username,
-                password: user.password
-            })
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: { "name": user.name, "password": user.password }
+          };
+          return fetch(API_URL + "login", requestOptions) 
+        // return axios
+        //     .post(API_URL + "login", {
+        //         name: user.name,
+        //         password: user.password
+        //     })
             .then(response => {
                 if (response.data.accessToken) {
                     localStorage.setItem('user', JSON.stringify(response.data))
@@ -26,7 +32,7 @@ class AuthService {
         return axios.post(API_URL + "sign", {
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email,
+            name: user.name,
             password: user.password
         });
     }

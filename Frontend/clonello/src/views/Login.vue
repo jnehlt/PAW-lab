@@ -5,19 +5,15 @@
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input v-validate="required" type="email" class="form-control form-control-lg" name="email" placeholder="name@example.com" />
-                <div v-if="errors.has('email')" class="alert alert-danger" role="alert">Username is required!</div>
+                <input v-model="user.name" v-validate="required" type="email" class="form-control form-control-lg" name="name" placeholder="Your email address" >
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input v-validate="required" type="password" class="form-control form-control-lg" name="password" />
-                <div v-if="errors.has('password')" class="alert alert-danger" role="alert">Password is required!</div>
+                <input v-model="user.password" v-validate="required" type="password" class="form-control form-control-lg" name="password" >
             </div>
 
-            <button type="button" class="sendbutton btn btn-dark btn-lg btn-block">
-                <router-link to="/" exact>Sign In</router-link>
-            </button>
+            <button type="button" class="sendbutton btn btn-dark btn-lg btn-block" @click="handleLogin">Login</button>
 
             <button type="button" class="signup btn btn-primary">
                 <router-link to="/signup" exact>Sign up</router-link>
@@ -31,10 +27,11 @@
 </template>
 
 <script>
+
 import User from "../models/user"
 
-
 export default {
+    name: 'Login',
     data () {
         return {
             user: new User('', ''),
@@ -42,14 +39,17 @@ export default {
             message: ''
         };
     },
+
+    // mounted () { axios .get('https://api.coindesk.com/v1/bpi/currentprice.json') .then(response => (this.info = response)) },
+
     computed: {
         loggedIn() {
-            return this.$store.state.auth.status.loggedIn
+            return this.$store.state.auth.status.loggedIn;
         }
     },
     created() {
         if (this.loggedIn) {
-            this.$router.push("/");
+            this.$router.push("/home");
         }
     },
     methods: {
@@ -61,10 +61,10 @@ export default {
                     return;
                 }
 
-                if (this.user.email && this.user.password) {
+                if (this.user.name && this.user.password) {
                     this.$store.dispatch("auth/login", this.user).then(
                         () => {
-                            this.$router.push("/");
+                            this.$router.push("/home");
                         },
                         error => {
                             this.loading = false;
