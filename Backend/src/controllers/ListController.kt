@@ -15,8 +15,8 @@ class ListController {
         }
     }
 
-    fun getAll() = transaction {
-        Lists.selectAll().mapNotNull { toList(it) }
+    fun getAll(userId : Int) = transaction {
+        Lists.select{Lists.userId eq userId}.mapNotNull { toList(it) }
     }
 
     fun getById(id: Int) = transaction {
