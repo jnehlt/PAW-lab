@@ -8,12 +8,12 @@ class AuthService {
         myHeaders.append("Content-Type", "application/json");       
         var raw = JSON.stringify({"name":user.name,"password": user.password});
         var requestOptions = {  method: 'POST',  headers: myHeaders,  body: raw,  redirect: 'follow'};
-        fetch(API_URL + "login", requestOptions).then(result => {
-            if (result) {
-                localStorage.setItem('user', JSON.stringify(result))
-            }
-        })
-        .catch(error => console.log('error', error));
+        return fetch(API_URL + 'login', requestOptions)
+        .then(response => response.text())
+        .then(token => {        
+            if (token) {            
+                localStorage.setItem('user', JSON.stringify({ ...user, token: JSON.stringify(token) }));
+        }}).catch(error => console.log('error', error));
           
         // return axios
         //     .post(API_URL + "login", {
@@ -24,8 +24,8 @@ class AuthService {
 
             //     return result.data;
             // });
-    }
-
+    
+        }
     logout() {
         localStorage.removeItem('user')
     }
