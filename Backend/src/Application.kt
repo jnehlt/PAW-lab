@@ -28,6 +28,7 @@ import kotlinx.html.head
 import kotlinx.html.title
 import org.jetbrains.exposed.sql.Database
 import java.security.MessageDigest
+import java.time.Duration
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -49,6 +50,24 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 
+    install(ForwardedHeaderSupport)
+    install(DefaultHeaders)
+    install(CORS)
+    {
+        method(HttpMethod.Options)
+        method(HttpMethod.Get)
+        method(HttpMethod.Post)
+        method(HttpMethod.Put)
+        method(HttpMethod.Delete)
+        method(HttpMethod.Patch)
+        header(HttpHeaders.AccessControlAllowHeaders)
+        header(HttpHeaders.ContentType)
+        header(HttpHeaders.AccessControlAllowOrigin)
+        allowCredentials = true
+        anyHost()
+        maxAge = Duration.ofDays(1)
+    }
+    
     install(Authentication) {
         /**
          * Setup the JWT authentication to be used in [Routing].
