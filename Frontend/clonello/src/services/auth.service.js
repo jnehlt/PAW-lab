@@ -14,30 +14,23 @@ class AuthService {
             if (token) {            
                 localStorage.setItem('user', JSON.stringify({ ...user, token: JSON.stringify(token) }));
         }}).catch(error => console.log('error', error));
-          
-        // return axios
-        //     .post(API_URL + "login", {
-        //         name: user.name,
-        //         password: user.password
-        //     })
-            
+    }
 
-            //     return result.data;
-            // });
-    
-        }
+
     logout() {
         localStorage.removeItem('user')
     }
 
     register(user) {
-        return axios.post(API_URL + "sign", {
+        return axios.post(API_URL + 'sign', {
             firstName: user.firstName,
             lastName: user.lastName,
-            name: user.name,
+            email: user.email,
             password: user.password
-        });
+          });
     }
 }
+
+
 
 export default new AuthService();
