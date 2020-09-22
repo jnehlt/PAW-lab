@@ -1,7 +1,9 @@
 <template>
 
-  <div class="home">
-
+  <div class="app">
+    <topheader></topheader>
+    <projectheader></projectheader>
+    <smallcards></smallcards>
 
 
   </div>
@@ -9,18 +11,27 @@
 
 <script>
 // @ is an alias to /src
+// import TopHeader from "@/components/TopHeader.vue";
+// import ProjectHeader from "@/components/ProjectHeader.vue";
 import TopHeader from "@/components/TopHeader.vue";
 import ProjectHeader from "@/components/ProjectHeader.vue";
-import MainCard from "@/components/MainCard.vue";
+import SmallCards from "@/components/SmallCards.vue";
 
 
 export default {
   components: {
-    "topheader": TopHeader,
-    "projectheader": ProjectHeader,
-    "maincard": MainCard
+    topheader: TopHeader,
+    projectheader: ProjectHeader,
+    smallcards: SmallCards
   }
 };
+
+
+  // components: {
+  //   "topheader": TopHeader,
+  //   "projectheader": ProjectHeader
+  // }
+
 </script>
 
 <style>
