@@ -13,7 +13,7 @@
                 <input v-model="user.password" v-validate="required" type="password" class="form-control form-control-lg" name="password" >
             </div>
 
-            <button type="button" class="sendbutton btn btn-dark btn-lg btn-block" @click="handleLogin">Login</button>
+            <button type="button" class="sendbutton btn btn-dark btn-lg btn-block" v-on:keyup.enter="onEnter" @click="handleLogin">Login</button>
 
             <button type="button" class="signup btn btn-primary">
                 <router-link to="/signup" exact>Sign up</router-link>
