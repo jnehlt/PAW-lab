@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="app">
     <topheader></topheader>
     <projectheader></projectheader>
@@ -22,12 +23,34 @@ export default {
     "projectheader": ProjectHeader,
     "smallcards": SmallCards,
  
+=======
+
+    <router-view ></router-view>
+  
+</template>
+
+<script>
+  import Home from "../src/views/Home"
+  import Login from "../src/views/Login"
+  import Signup from "../src/views/Signup"
+  import ForgotPassword from "../src/views/ForgotPassword"
+
+
+  export default {
+    views: {
+      'home': Home,
+      'login': Login,
+      'signup': Signup,
+      'forgotpassword': ForgotPassword
+    }
+>>>>>>> frontend/feature
   }
-};
+  
 </script>
 
 <style lang="scss">
 
+<<<<<<< HEAD
 body {
     background-image: url("../src/assets/running-track-sn-3000x2001.jpg");
     background-size: cover;
@@ -70,4 +93,6 @@ html, body {
 }
 
 
+=======
+>>>>>>> frontend/feature
 </style>
