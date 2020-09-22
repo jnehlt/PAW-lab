@@ -1,14 +1,8 @@
 <template>
-<<<<<<< HEAD
   <div id="app">
     <topheader></topheader>
     <projectheader></projectheader>
-    <smallcards></smallcards> 
- 
-   
-
-
-   
+    <smallcards></smallcards>
   </div>
 </template>
 
@@ -16,62 +10,49 @@
 import TopHeader from "@/components/TopHeader.vue";
 import ProjectHeader from "@/components/ProjectHeader.vue";
 import SmallCards from "@/components/SmallCards.vue";
+import Home from "../src/views/Home";
+import Login from "../src/views/Login";
+import Signup from "../src/views/Signup";
+import ForgotPassword from "../src/views/ForgotPassword";
 
 export default {
   components: {
-    "topheader": TopHeader,
-    "projectheader": ProjectHeader,
-    "smallcards": SmallCards,
- 
-=======
-
-    <router-view ></router-view>
-  
-</template>
-
-<script>
-  import Home from "../src/views/Home"
-  import Login from "../src/views/Login"
-  import Signup from "../src/views/Signup"
-  import ForgotPassword from "../src/views/ForgotPassword"
-
-
-  export default {
-    views: {
-      'home': Home,
-      'login': Login,
-      'signup': Signup,
-      'forgotpassword': ForgotPassword
-    }
->>>>>>> frontend/feature
+    topheader: TopHeader,
+    projectheader: ProjectHeader,
+    smallcards: SmallCards
+  },
+  views: {
+    home: Home,
+    login: Login,
+    signup: Signup,
+    forgotpassword: ForgotPassword
   }
-  
+};
 </script>
 
 <style lang="scss">
-
-<<<<<<< HEAD
 body {
-    background-image: url("../src/assets/running-track-sn-3000x2001.jpg");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../src/assets/running-track-sn-3000x2001.jpg");
+  background-size: cover;
+  background-position: center;
 }
-#app{
+#app {
   font-size: 20px;
 }
 
 .dropdown-header {
-    font-size: larger;
-    font-weight: bolder;
+  font-size: larger;
+  font-weight: bolder;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 .list-head {
-    font-weight: bolder;
-    text-transform: uppercase;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 .row {
@@ -85,14 +66,10 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-  height: 4px;              /* height of horizontal scrollbar ← You're missing this */
-  width: 4px;               /* width of vertical scrollbar */
+  height: 4px; /* height of horizontal scrollbar ← You're missing this */
+  width: 4px; /* width of vertical scrollbar */
   border: 1px solid #d5d5d5;
   margin-left: -5px;
   margin-right: -5px;
 }
-
-
-=======
->>>>>>> frontend/feature
 </style>
