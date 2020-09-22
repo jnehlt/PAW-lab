@@ -29,7 +29,7 @@
             </b-dropdown>
             <b-dropdown id="dropdown-right" right text="Profil" variant="primary" class="m-2">
               <b-dropdown-item href="#">Ustawienia</b-dropdown-item>
-              <b-dropdown-item href="#">Wyloguj</b-dropdown-item>
+              <b-dropdown-item><button type="button" @click.prevent="logOut">Logout</button></b-dropdown-item>
             </b-dropdown>
           </li>
         </ul>
@@ -45,6 +45,17 @@
 
 
 export default {
+
+  currentUser() {
+      return this.$store.state.auth.user;
+  },
+
+  methods: {
+    logOut() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
+    }
+  }
   
 };
 </script>

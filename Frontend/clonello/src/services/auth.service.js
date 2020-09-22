@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = 'http://0.0.0.0:8082/users/';
+const API_URL = 'http://0.0.0.0:8082/';
+
 
 class AuthService {
     login(user) {
@@ -8,7 +9,7 @@ class AuthService {
         myHeaders.append("Content-Type", "application/json");       
         var raw = JSON.stringify({"name":user.name,"password": user.password});
         var requestOptions = {  method: 'POST',  headers: myHeaders,  body: raw,  redirect: 'follow'};
-        return fetch(API_URL + 'login', requestOptions)
+        return fetch(API_URL + 'users/login', requestOptions)
         .then(response => response.text())
         .then(token => {        
             if (token) {            
@@ -22,7 +23,7 @@ class AuthService {
     }
 
     register(user) {
-        return axios.post(API_URL + 'sign', {
+        return axios.post(API_URL + 'users/sign', {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
@@ -30,6 +31,8 @@ class AuthService {
           });
     }
 }
+
+
 
 
 
