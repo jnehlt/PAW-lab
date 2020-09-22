@@ -1,19 +1,9 @@
 <template>
-  <div id="app">
-    <topheader></topheader>
-    <projectheader></projectheader>
 
-    <div class="row">
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-        <maincard></maincard>
-    </div>
-    <router-view />
+  <div class="home">
+
+
+
   </div>
 </template>
 
