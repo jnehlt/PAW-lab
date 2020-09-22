@@ -9,15 +9,15 @@
             </div>
 
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block">
-                <router-link to="/" exact>Send email</router-link>
+                <router-link to="/login" exact>Send email</router-link>
             </button>
 
             <button type="button" class="signup btn btn-primary">
-                <router-link to="/sign-up" exact>Sign up</router-link>
+                <router-link to="/signup" exact>Sign up</router-link>
             </button>
             
             <button type="button" class="forgot-password btn btn-primary">
-                <router-link to="/" exact>Sign In</router-link>
+                <router-link to="/login" exact>Sign In</router-link>
             </button>
         </form>
     </div>
