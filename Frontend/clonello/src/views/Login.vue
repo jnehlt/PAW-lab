@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input v-model="user.password" v-validate="required" type="password" class="form-control form-control-lg" name="password" >
+                <input v-model="user.password" v-validate="required" type="password" class="form-control form-control-lg" name="password" @keyup.enter="handleLogin" >
             </div>
 
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block" v-on:keyup.enter="onEnter" @click="handleLogin">Login</button>

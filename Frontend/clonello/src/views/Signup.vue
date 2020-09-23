@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label>Password</label>
-                <input v-model="user.password" v-validate="'required|min:4|max:40'" type="password" class="form-control form-control-lg" name="password" placeholder="Password: minimum 4 characters"/>
+                <input v-model="user.password" v-validate="'required|min:4|max:40'" type="password" class="form-control form-control-lg" name="password" placeholder="Password: minimum 4 characters" @keyup.enter="handleRegister" />
             </div>
 
             <button type="button" class="sendbutton btn btn-dark btn-lg btn-block" @click="handleRegister">Sign Up</button>
